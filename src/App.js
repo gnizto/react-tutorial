@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function Square({ value, onSquareClick }) {
-  console.log(`Square called value=${value}`);
+  // console.log(`Square called value=${value}`);
   return (
     <button className="square" onClick={onSquareClick}>
       {value}
@@ -18,7 +18,7 @@ export default function Board() {
   // let status;
 
   const status = winner ? `Winner: ${winner}` : `Next player: ${nextPlayer}`;
-
+  console.log(winner);
   const handleClick = (position) => {
     if (squares[position] || winner) return;
 
