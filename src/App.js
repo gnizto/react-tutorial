@@ -15,9 +15,9 @@ export default function Board() {
 
   const winner = calculateWinner(squares);
   const nextPlayer = xIsNext ? "X" : "O";
-  let status;
+  // let status;
 
-  status = winner ? `Winner: ${winner}` : `Next player: ${nextPlayer}`;
+  const status = winner ? `Winner: ${winner}` : `Next player: ${nextPlayer}`;
 
   const handleClick = (position) => {
     if (squares[position] || winner) return;
@@ -28,6 +28,10 @@ export default function Board() {
     setXIsNext(!xIsNext);
   };
 
+  const handleRestart = () => {
+    setSquares(Array(9).fill(null));
+    // setXIsNext(true);
+  };
   console.log(squares);
 
   return (
@@ -48,6 +52,7 @@ export default function Board() {
         <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
         <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
       </div>
+      {winner ? <button onClick={handleRestart}>Restart?</button> : null}
     </React.Fragment>
   );
 }
